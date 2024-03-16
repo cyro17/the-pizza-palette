@@ -42,31 +42,40 @@ function CreateOrder() {
   const cart = fakeCart;
 
   return (
-    <div className="px-4 py-8 text-left">
-      <h2>Ready to order? Let's go!</h2>
+    <div className="px-4 py-6  ">
+      <h2 className="text-xl font-semibold mb-8">Ready to order? Let's go!</h2>
 
       <Form method="POST">
-        <div className="mb-5 flex flex-col gap-2 ">
-          <label>First Name</label>
-          <input type="text" name="customer" required className="input" />
+        <div className="mb-5 flex gap-2 flex-col sm:flex-row sm:items-center">
+          <label className="sm:basis-40">First Name</label>
+          <input type="text" name="customer" required className="input grow" />
         </div>
 
-        <div className="mb-5 flex flex-col gap-2">
-          <label>Phone number</label>
-          <div>
-            <input type="tel" name="phone" required className="input" />
-          </div>
-          {formErrors?.phone && <p>{formErrors.phone}</p>}
-        </div>
-
-        <div>
-          <label>Address</label>
-          <div>
-            <input type="text" name="address" required className="input" />
+        <div className="mb-5 flex gap-2 flex-col sm:flex-row sm:items-center">
+          <label className="sm:basis-40">Phone number</label>
+          <div className="grow">
+            <input type="tel" name="phone" required className="input w-full" />
+            {formErrors?.phone && (
+              <p className="text-xs mt-2 text-red-700 bg-red-100 p-2 rounded-md">
+                {formErrors.phone}
+              </p>
+            )}
           </div>
         </div>
 
-        <div className="my-5">
+        <div className="mb-5 flex gap-2 flex-col sm:flex-row sm:items-center">
+          <label className="sm:basis-40">Address</label>
+          <div className="grow">
+            <input
+              type="text"
+              name="address"
+              required
+              className="input w-full"
+            />
+          </div>
+        </div>
+
+        <div className="mb-12 flex items-center gap-5 font-medium">
           <input
             type="checkbox"
             name="priority"
@@ -86,7 +95,7 @@ function CreateOrder() {
             value={JSON.stringify(cart)}
             required
           />
-          <Button disabled={isSubmitting}>
+          <Button type="primary" disabled={isSubmitting}>
             {isSubmitting ? "Placing order..." : "Order now"}
           </Button>
         </div>
