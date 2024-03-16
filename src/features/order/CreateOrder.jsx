@@ -42,35 +42,37 @@ function CreateOrder() {
   const cart = fakeCart;
 
   return (
-    <div className="px-4 py-8 ">
+    <div className="px-4 py-8 text-left">
       <h2>Ready to order? Let's go!</h2>
 
       <Form method="POST">
         <div className="mb-5 flex flex-col gap-2 ">
           <label>First Name</label>
-          <input type="text" name="customer" required />
+          <input type="text" name="customer" required className="input" />
         </div>
 
         <div className="mb-5 flex flex-col gap-2">
           <label>Phone number</label>
           <div>
-            <input type="tel" name="phone" required />
+            <input type="tel" name="phone" required className="input" />
           </div>
           {formErrors?.phone && <p>{formErrors.phone}</p>}
         </div>
 
-        <div className="mb-5 flex flex-col gap-2">
+        <div>
           <label>Address</label>
           <div>
-            <input type="text" name="address" required />
+            <input type="text" name="address" required className="input" />
           </div>
         </div>
 
-        <div className="mb-5 flex flex-col gap-2">
+        <div className="my-5">
           <input
             type="checkbox"
             name="priority"
             id="priority"
+            className="h-5 w-6 accent-yellow-400 
+            focus:outline-none focus:ring focus:ring-offset-1 focus:ring-yellow-400 "
             // value={withPriority}
             // onChange={(e) => setWithPriority(e.target.checked)}
           />
