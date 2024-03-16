@@ -5,7 +5,7 @@ import { createOrder } from "../../services/apiRestaurant";
 // https://uibakery.io/regex-library/phone-number
 const isValidPhone = (str) =>
   /^\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}$/.test(
-    str
+    str,
   );
 
 const fakeCart = [
@@ -42,16 +42,16 @@ function CreateOrder() {
   const cart = fakeCart;
 
   return (
-    <div>
+    <div className="px-4 py-8 ">
       <h2>Ready to order? Let's go!</h2>
 
       <Form method="POST">
-        <div>
+        <div className="mb-5 flex flex-col gap-2 ">
           <label>First Name</label>
           <input type="text" name="customer" required />
         </div>
 
-        <div>
+        <div className="mb-5 flex flex-col gap-2">
           <label>Phone number</label>
           <div>
             <input type="tel" name="phone" required />
@@ -59,14 +59,14 @@ function CreateOrder() {
           {formErrors?.phone && <p>{formErrors.phone}</p>}
         </div>
 
-        <div>
+        <div className="mb-5 flex flex-col gap-2">
           <label>Address</label>
           <div>
             <input type="text" name="address" required />
           </div>
         </div>
 
-        <div>
+        <div className="mb-5 flex flex-col gap-2">
           <input
             type="checkbox"
             name="priority"
@@ -84,7 +84,14 @@ function CreateOrder() {
             value={JSON.stringify(cart)}
             required
           />
-          <button disabled={isSubmitting}>
+          <button
+            disabled={isSubmitting}
+            className="bg-yellow-400 font-semibold text-stone-800 my-2 px-1 py-1 
+              inline-block rounded-full uppercase tracking-wide
+             hover:bg-yellow-300 hover:ring-yellow-300 hover:offset-2 transition-colors duration-300 
+             focus:outline-none focus:ring-yellow-300 focus:ring focus:offset-2 
+             disabled:cursor-not-allowed disabled:bg-slate-600"
+          >
             {isSubmitting ? "Placing order..." : "Order now"}
           </button>
         </div>
