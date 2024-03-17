@@ -9,6 +9,9 @@ export default {
       height: {
         screen: "100dvh",
       },
+      backgroundImage: theme => ({
+        'home_page': "url('/public/pizza_home.jpg')",
+    })
     },
   },
   plugins: [],
