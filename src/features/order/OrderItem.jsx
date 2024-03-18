@@ -13,6 +13,7 @@ function OrderItem({ item, isLoadingIngredients, ingredients }) {
           {formatCurrency(totalPrice)}
         </p>
       </div>
+      <p className=" text-left text-sm capitalize italic ">{ isLoadingIngredients ? 'loading': ingredients.join(', ')}</p>
     </li>
   );
 }
